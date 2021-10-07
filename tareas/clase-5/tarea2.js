@@ -3,6 +3,11 @@ document.querySelector('#subir-info').onclick = function(){
   const segundoNombre = document.createTextNode(document.querySelector('#nombre2').value);
   const apellido = document.createTextNode(document.querySelector('#apellido').value);
   const edad = document.createTextNode(document.querySelector('#edad').value);
+
+  const bienvenida = document.querySelector('#bienvenida');
+  const editBienvenida = document.createTextNode(document.querySelector('#nombre1').value);
+  bienvenida.appendChild(editBienvenida);
+
   let nodoDiv = document.querySelector('#resultado');
   let nuevoParrafo = document.createElement('p');
   nuevoParrafo.appendChild(primerNombre);
