@@ -1,15 +1,19 @@
 document.querySelector('#subir-info').onclick = function(){
-  const primerNombre = document.querySelector('#nombre1').value;
-  const segundoNombre = document.querySelector('#nombre2').value;
-  const apellido = document.querySelector('#apellido').value;
-  const edad = document.querySelector('#edad').value;
+  const primerNombre = document.createTextNode(document.querySelector('#nombre1').value);
+  const segundoNombre = document.createTextNode(document.querySelector('#nombre2').value);
+  const apellido = document.createTextNode(document.querySelector('#apellido').value);
+  const edad = document.createTextNode(document.querySelector('#edad').value);
 
-  const nodoDiv = document.querySelector('div');
-  const nuevoParrafo = document.createElement('p');
-  nodoDiv.appendChild(nuevoParrafo)
+  const bienvenida = document.querySelector('#bienvenida');
+  const editBienvenida = document.createTextNode(document.querySelector('#nombre1').value);
+  bienvenida.appendChild(editBienvenida);
+
+  let nodoDiv = document.querySelector('#resultado');
+  let nuevoParrafo = document.createElement('p');
   nuevoParrafo.appendChild(primerNombre);
   nuevoParrafo.appendChild(segundoNombre);
   nuevoParrafo.appendChild(apellido);
-  nuevoParrafo.appendChild(edad)
+  nuevoParrafo.appendChild(edad);
+  nodoDiv.appendChild(nuevoParrafo);
   return false;
 }
