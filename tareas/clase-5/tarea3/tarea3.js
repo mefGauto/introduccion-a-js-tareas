@@ -1,18 +1,16 @@
 document.querySelector('#botonSumar').onclick = function(){
-  const horas = document.querySelector('#horas').value;
-  const minutos = document.querySelector('#minutos').value;
-  const segundos = document.querySelector('#segundos').value;
+  const horas = document.createTextNode(document.querySelector('#horas').value);
+  const minutos = document.createTextNode(document.querySelector('#minutos').value);
+  const segundos = document.createTextNode(document.querySelector('#segundos').value);
 
-  if(segundos === 60){
-    minutos++;
-  }
-  if(minutos === 60){
-    horas++;
-  }
-
-  let duracionTotal = horas + minutos + segundos;
-  let sumaDuracion = duracionTotal + horas + minutos + segundos;
-
-  const nodoStrong = document.querySelector('#duracionTotal')
-  nodoStrong.appendChild(sumaDuracion)
+  const nodoP = document.querySelector('#duracionTotal');
+  const strongHoras = document.querySelector('#strong-horas');
+  const strongMinutos = document.querySelector('#strong-minutos');
+  const strongSegundos = document.querySelector('#strong-segundos');
+  strongHoras.appendChild(horas);
+  strongMinutos.appendChild(minutos);
+  strongSegundos.appendChild(segundos);
+  nodoP.appendChild(strongHoras);
+  nodoP.appendChild(strongMinutos);
+  nodoP.appendChild(strongSegundos);
 }
