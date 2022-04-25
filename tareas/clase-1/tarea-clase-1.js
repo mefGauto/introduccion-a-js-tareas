@@ -3,47 +3,69 @@
 // Preguntarle estos datos al usuario y guardarlos en 2 variables
 // Ejecutar la función con estos datos
 // Impriman el resultado en la consola
-function calcularEdad(anioActual, anioNacimiento) {
-    return anioActual - anioNacimiento;
-}
+        
+        /*
+        
+        function calcularEdad(anioActual, anioNacimiento) {
+            return anioActual - anioNacimiento;
+        }
 
-const anioActual = Number(prompt("Cuál es el año actual?"));
-const anioNacimiento = Number(prompt("En qué año naciste?"));
+        const anioActual = Number(prompt("Cuál es el año actual?"));
+        const anioNacimiento = Number(prompt("En qué año naciste?"));
 
-console.log('Tenés ' + calcularEdad(anioActual, anioNacimiento) + ' años');
+        console.log('Tenés ' + calcularEdad(anioActual, anioNacimiento) + ' años'); 
+
+        */
+        let body = document.querySelector('body');
+        document.querySelector('#calcularEdad').onclick = function() {
+            function calcularEdad(){
+               edad = anioActual - anioNacimiento;
+            }
+            
+            let edad;
+            let anioActual = document.querySelector('#anioActual').value;
+            let anioNacimiento = document.querySelector('#anioNacimiento').value;
+            calcularEdad();
+            let parrafo = document.createElement('p');
+            let edadCalculada = document.createTextNode(`Tenes ${edad} años`);
+            parrafo.appendChild(edadCalculada);
+            body.appendChild(parrafo);
+    }
+
 
 // Preguntar el salario anual y calcular el salario mensual
 // Preguntar el salario mensual y calcular el anual
 // diario... semanal, por hora. etc.
+            
+            /*
+            function calcularSalarioAnual(salarioMensual) {
+                const cantidadMesesEnUnAnio = 12;
+                return salarioMensual * cantidadMesesEnUnAnio;
+            }
 
-function calcularSalarioAnual(salarioMensual) {
-    const cantidadMesesEnUnAnio = 12;
-    return salarioMensual * cantidadMesesEnUnAnio;
-}
+            function calcularSalarioMensual(salarioAnual) {
+                const cantidadMesesEnUnAnio = 12;
+                return salarioAnual / cantidadMesesEnUnAnio;
+            }
 
-function calcularSalarioMensual(salarioAnual) {
-    const cantidadMesesEnUnAnio = 12;
-    return salarioAnual / cantidadMesesEnUnAnio;
-}
+            function calcularSalarioSemanal(salarioAnual) {
+                const cantidadSemanasEnUnAnio = 52;
+                return salarioAnual / cantidadSemanasEnUnAnio;
+            }
 
-function calcularSalarioSemanal(salarioAnual) {
-    const cantidadSemanasEnUnAnio = 52;
-    return salarioAnual / cantidadSemanasEnUnAnio;
-}
+            function calcularSalarioDiario(salarioAnual) {
+                const cantidadDiasEnUnAnio = 365;
+                return salarioAnual / cantidadDiasEnUnAnio;
+            }
 
-function calcularSalarioDiario(salarioAnual) {
-    const cantidadDiasEnUnAnio = 365;
-    return salarioAnual / cantidadDiasEnUnAnio;
-}
+            const salarioMensual = Number(prompt('Cuál es tu salario mensual?'));
+            console.log('Tu salario anual es ' + calcularSalarioAnual(salarioMensual));
 
-const salarioMensual = Number(prompt('Cuál es tu salario mensual?'));
-console.log('Tu salario anual es ' + calcularSalarioAnual(salarioMensual));
-
-const salarioAnual = Number(prompt('Cuál es tu salario mensual?'));
-console.log('Tu salario mensual es ' + calcularSalarioMensual(salarioAnual));
-console.log('Tu salario semanal es ' + calcularSalarioSemanal(salarioAnual));
-console.log('Tu salario diario es ' + calcularSalarioDiario(salarioAnual));
-
+            const salarioAnual = Number(prompt('Cuál es tu salario mensual?'));
+            console.log('Tu salario mensual es ' + calcularSalarioMensual(salarioAnual));
+            console.log('Tu salario semanal es ' + calcularSalarioSemanal(salarioAnual));
+            console.log('Tu salario diario es ' + calcularSalarioDiario(salarioAnual));
+            */
 /// SCOPE
 
 // Variable hoisting -> izar
