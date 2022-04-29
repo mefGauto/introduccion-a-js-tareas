@@ -6,21 +6,44 @@
 // Si el nombe del usuario es el mismo que el que nombre que eligieron
 // Imprimir "Hola " y el nombre, " te llamás igual que mi ..."
 // Si no, simplemente imprimir "Hola " + nombre!
-/*
-const nombreUsuario = prompt('Cual es tu nombre?');
-const miNombre = 'matias';
-const nombreAmigo = 'julian';
-function compararNombres(nombreUsuario, miNombre, nombreAmigo){
-    if(nombreUsuario === miNombre){
-        console.log('Hola, Tocayo! Yo tambien me llamo ' + miNombre)
-    }else if (nombreUsuario === nombreAmigo){
-        console.log('Hola ' + nombreUsuario + ' te llamas igual que mi amigo ' + nombreAmigo)
-    } else{
-        console.log('Hola ' + nombreUsuario)
+
+            /*
+            const nombreUsuario = prompt('Cual es tu nombre?');
+            const miNombre = 'matias';
+            const nombreAmigo = 'julian';
+            function compararNombres(nombreUsuario, miNombre, nombreAmigo){
+                if(nombreUsuario === miNombre){
+                    console.log('Hola, Tocayo! Yo tambien me llamo ' + miNombre)
+                }else if (nombreUsuario === nombreAmigo){
+                    console.log('Hola ' + nombreUsuario + ' te llamas igual que mi amigo ' + nombreAmigo)
+                } else{
+                    console.log('Hola ' + nombreUsuario)
+                }
+            }
+            console.log(compararNombres(nombreUsuario, miNombre, nombreAmigo));
+            */
+    const body = document.querySelector('body');
+    const parrafo = document.createElement('p');
+    document.querySelector('#botonIngresarNombre').onclick = function() {
+        const miNombre = 'matias';
+        const nombreMamá = 'mariela';
+        const nombreUsuario = document.querySelector('#nombreUsuario').value;
+
+        if(nombreUsuario === miNombre) {
+            let nombreIguales = document.createTextNode(`Hola, Tocayo! Yo tambien me llamo ${nombreUsuario}`);
+            parrafo.appendChild(nombreIguales);
+            body.appendChild(parrafo);
+        }else if(nombreUsuario === nombreMamá) {
+            let nombreIgualMama = document.createTextNode(`Hola ${nombreUsuario}, te llamas igual que mi Mamá. `)
+            parrafo.appendChild(nombreIgualMama);
+            body.appendChild(parrafo);
+        }else {
+            let nombre = document.createTextNode(`Hola, ${nombreUsuario}`)
+            parrafo.appendChild(nombre);
+            body.appendChild(parrafo);
+        }
     }
-}
-console.log(compararNombres(nombreUsuario, miNombre, nombreAmigo));
-*/
+
 //Tarea 2:
 // Preguntar la edad del usuario
 // Hacerle saber si tiene más, menos ó la misma edad que nosotros.
