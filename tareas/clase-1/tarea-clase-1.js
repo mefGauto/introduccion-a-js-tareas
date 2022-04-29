@@ -66,6 +66,24 @@
             console.log('Tu salario semanal es ' + calcularSalarioSemanal(salarioAnual));
             console.log('Tu salario diario es ' + calcularSalarioDiario(salarioAnual));
             */
+
+            let mesesEnUnAño = 12;
+            let parrafo = document.createElement('p');
+            document.querySelector('#botonSalarioM').onclick = function(){
+                let salarioAnual = document.querySelector('#salarioAnual').value;
+                let salarioMensual = Math.floor(salarioAnual / mesesEnUnAño);
+                let salarioCalculado = document.createTextNode(`Tu salario mensual es de $${salarioMensual}`);
+                parrafo.appendChild(salarioCalculado);
+                body.appendChild(parrafo);
+            }
+
+            document.querySelector('#botonSalarioA').onclick = function(){
+                let salarioMensual = document.querySelector('#salarioMensual').value;
+                let salarioAnual = Math.floor(salarioMensual * mesesEnUnAño);
+                let salarioCalculado = document.createTextNode(`Tu salario anual es de $${salarioAnual}`);
+                parrafo.appendChild(salarioCalculado);
+                body.appendChild(parrafo);
+            }
 /// SCOPE
 
 // Variable hoisting -> izar
