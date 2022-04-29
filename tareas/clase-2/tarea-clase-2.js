@@ -18,27 +18,49 @@
 
 // TAREA: Cambiar el operador a '-', y fijarse que llame a la función 'restar' en vez de a la de 'sumar'.
 
-function sumar(numero1, numero2) {
-    return numero1 + numero2;
-}
+                        /*
+                        function sumar(numero1, numero2) {
+                            return numero1 + numero2;
+                        }
 
-function restar(numero1, numero2) {
-    return numero1 - numero2;
-}
+                        function restar(numero1, numero2) {
+                            return numero1 - numero2;
+                        }
 
-const operador = prompt('Ingrese + o -');
-const numero1 = 1;
-const numero2 = 2;
+                        const operador = prompt('Ingrese + o -');
+                        const numero1 = 1;
+                        const numero2 = 2;
 
-let resultado;
-if (operador === '+') {
-    resultado = sumar(numero1, numero2);
-} else {
-    resultado = restar(numero1, numero2);
-}
+                        let resultado;
+                        if (operador === '+') {
+                            resultado = sumar(numero1, numero2);
+                        } else {
+                            resultado = restar(numero1, numero2);
+                        }
 
-//https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings
-console.log(
-    `El resultado de ${numero1} ${operador} ${numero2} es ${resultado}`
-);
+                        //https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings
+                        console.log(
+                            `El resultado de ${numero1} ${operador} ${numero2} es ${resultado}`
+                        );
+                        */
+    let body = document.querySelector('body');
+    
+    let parrafo = document.createElement('p');
 
+    document.querySelector('#sumar').onclick = function() {
+        let numero1 = Number(document.querySelector('#numero1').value);
+        let numero2 = Number(document.querySelector('#numero2').value);
+        let suma = numero1 + numero2;
+        let resultado = document.createTextNode(`El resultado de la suma de los numeros, ${numero1} y ${numero2}, es ${suma}`);
+        parrafo.appendChild(resultado);
+        body.appendChild(parrafo);
+    }
+
+    document.querySelector('#restar').onclick = function() {
+        let numero1 = Number(document.querySelector('#numero1').value);
+        let numero2 = Number(document.querySelector('#numero2').value);
+        let resta = numero1 - numero2;
+        let resultado = document.createTextNode(`El resultado de la resta de los numeros, ${numero1} y ${numero2}, el ${resta}`);
+        parrafo.appendChild(resultado);
+        body.appendChild(parrafo);
+    }
