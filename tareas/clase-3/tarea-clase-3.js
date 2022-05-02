@@ -47,20 +47,44 @@
 //Tarea 2:
 // Preguntar la edad del usuario
 // Hacerle saber si tiene más, menos ó la misma edad que nosotros.
-/*
-const edadUsuairo = Number(prompt('Cual es tu edad?'));
-const miEdad = 22;
-function compararEdades(edadUsuairo, miEdad){
-    if(edadUsuairo === miEdad){
-        console.log('Tenemos la misma edad!')
-    }else if(edadUsuairo < miEdad) {
-        console.log('Tu edad es menor que la mia!')
-    }else if(edadUsuairo > miEdad){
-        console.log('Tu edad es mayor que la mia!')
+
+                        /*
+                        const edadUsuairo = Number(prompt('Cual es tu edad?'));
+                        const miEdad = 22;
+                        function compararEdades(edadUsuairo, miEdad){
+                            if(edadUsuairo === miEdad){
+                                console.log('Tenemos la misma edad!')
+                            }else if(edadUsuairo < miEdad) {
+                                console.log('Tu edad es menor que la mia!')
+                            }else if(edadUsuairo > miEdad){
+                                console.log('Tu edad es mayor que la mia!')
+                            }
+                        }
+                        console.log(compararEdades())
+                        */
+    document.querySelector('#botonIngEdad').onclick = function() {
+        
+        const edadUsuario = Number(document.querySelector('#edadUsuario').value);
+        const miEdad = 22;
+
+        if(edadUsuario === miEdad) {
+          let edadesIguales = document.createTextNode(`Tu edad es igual a la mía`);
+          parrafo.appendChild(edadesIguales);
+          body.appendChild(parrafo);  
+        }else if(edadUsuario < miEdad) {
+            let edadMenor = document.createTextNode(`Tu edad es menor a la mía`);
+            parrafo.appendChild(edadMenor);
+            body.appendChild(parrafo);
+        }else if (edadUsuario > miEdad) {
+            let edadMayor = document.createTextNode(`Tu edad es mayor que la mía`);
+            parrafo.appendChild(edadMayor);
+            body.appendChild(parrafo);
+        }
+
     }
-}
-console.log(compararEdades())
-*/
+
+
+
 //Tarea 3:
 // Preguntarle al usuario si tiene documento, y que conteste con "si" o "no".
 // Si dice si, preguntarle la edad.
