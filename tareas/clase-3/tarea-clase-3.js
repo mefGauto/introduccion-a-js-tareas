@@ -22,25 +22,22 @@
             }
             console.log(compararNombres(nombreUsuario, miNombre, nombreAmigo));
             */
-    const body = document.querySelector('body');
-    const parrafo = document.createElement('p');
+
     document.querySelector('#botonIngresarNombre').onclick = function() {
+        const parrafoNombre = document.querySelector('#pNombre');
         const miNombre = 'matias';
         const nombreMamá = 'mariela';
-        const nombreUsuario = document.querySelector('#nombreUsuario').value;
+        const nombreUsuario = document.querySelector('#nombreUsuario').value.toLowerCase();
 
         if(nombreUsuario === miNombre) {
             let nombreIguales = document.createTextNode(`Hola, Tocayo! Yo tambien me llamo ${nombreUsuario}`);
-            parrafo.appendChild(nombreIguales);
-            body.appendChild(parrafo);
+            parrafoNombre.appendChild(nombreIguales);
         }else if(nombreUsuario === nombreMamá) {
             let nombreIgualMama = document.createTextNode(`Hola ${nombreUsuario}, te llamas igual que mi Mamá. `)
-            parrafo.appendChild(nombreIgualMama);
-            body.appendChild(parrafo);
+            parrafoNombre.appendChild(nombreIgualMama);
         }else {
             let nombre = document.createTextNode(`Hola, ${nombreUsuario}`)
-            parrafo.appendChild(nombre);
-            body.appendChild(parrafo);
+            parrafoNombre.appendChild(nombre);
         }
     }
 
@@ -63,22 +60,19 @@
                         console.log(compararEdades())
                         */
     document.querySelector('#botonIngEdad').onclick = function() {
-        
+        const parrafoEdad = document.querySelector('#pEdad');
         const edadUsuario = Number(document.querySelector('#edadUsuario').value);
         const miEdad = 22;
 
         if(edadUsuario === miEdad) {
           let edadesIguales = document.createTextNode(`Tu edad es igual a la mía`);
-          parrafo.appendChild(edadesIguales);
-          body.appendChild(parrafo);  
+          parrafoEdad.appendChild(edadesIguales); 
         }else if(edadUsuario < miEdad) {
             let edadMenor = document.createTextNode(`Tu edad es menor a la mía`);
-            parrafo.appendChild(edadMenor);
-            body.appendChild(parrafo);
+            parrafoEdad.appendChild(edadMenor);
         }else if (edadUsuario > miEdad) {
             let edadMayor = document.createTextNode(`Tu edad es mayor que la mía`);
-            parrafo.appendChild(edadMayor);
-            body.appendChild(parrafo);
+            parrafoEdad.appendChild(edadMayor);
         }
 
     }
