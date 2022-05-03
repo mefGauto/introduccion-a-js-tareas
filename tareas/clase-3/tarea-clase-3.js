@@ -87,17 +87,56 @@
 // Si no tiene documento, no dejarlo entrar al bar.
 // Si no entendemos la respuesta, le decimos que no entendimos la respuesta.
 // Punto bonus: SI, NO, Si, No, si, no.
-const EDAD_PARA_PASAR = 18;
-const pedirDoc = prompt('Tenes documento? Contesta "si" o "no"').toLowerCase();
-if(pedirDoc === 'si'){
-    let pedirEdad = prompt('Me decis tu edad?')
-        if(pedirEdad >= EDAD_PARA_PASAR){
-            console.log('Bienvenido al bar, podes pasar.')
-        }else if(pedirEdad < EDAD_PARA_PASAR){
-            console.log('No podes pasar siendo menor de edad')
+
+                    /*
+                    const EDAD_PARA_PASAR = 18;
+                    const pedirDoc = prompt('Tenes documento? Contesta "si" o "no"').toLowerCase();
+                    if(pedirDoc === 'si'){
+                        let pedirEdad = prompt('Me decis tu edad?')
+                            if(pedirEdad >= EDAD_PARA_PASAR){
+                                console.log('Bienvenido al bar, podes pasar.')
+                            }else if(pedirEdad < EDAD_PARA_PASAR){
+                                console.log('No podes pasar siendo menor de edad')
+                            }
+                    }else if(pedirDoc === 'no'){
+                        console.log('No podes pasar')
+                    }else{
+                        console.log('Spanish motherfucker, do you speak it?')
+                    }
+                    */
+
+    let pEdadEntradaBar = document.querySelector('#pEdadEntradaBar');
+    document.querySelector('#siTiene').onclick = function() {
+        const div = document.querySelector('#divEdad');                
+        
+        let input = document.createElement('input');
+        input.id = "edadUsuario";
+        input.setAttribute("type", "number")
+        
+        let label = document.createElement('label');
+        label.setAttribute("for", "edadUsuario");
+        label.innerHTML = "Me decis tu edad?";
+
+        let button = document.createElement('button');
+        button.setAttribute("for", "edadUsuario");
+        button.innerHTML = "Ingresar edad";
+
+        div.appendChild(label);
+        div.appendChild(input);
+        div.appendChild(button);
+
+        button.onclick = function(){
+            if(input.value < 18){
+                let menorDeEdad = document.createTextNode(`No podes pasar si sos menor de 18 años.`);
+                pEdadEntradaBar.appendChild(menorDeEdad);
+            }else if(input.value >= 18) {
+                let mayorDeEdad = document.createTextNode(`Podes pasar`);
+                pEdadEntradaBar.appendChild(mayorDeEdad);
+            }
         }
-}else if(pedirDoc === 'no'){
-    console.log('No podes pasar')
-}else{
-    console.log('Spanish motherfucker, do you speak it?')
-}
+    }
+
+    document.querySelector('#noTiene').onclick = function() {
+        let noTieneDoc = document.createTextNode(`No podes pasar si no tenes documento, pibe`);
+        pEdadEntradaBar.appendChild(noTieneDoc);
+    }
