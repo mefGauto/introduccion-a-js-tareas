@@ -5,6 +5,21 @@
 */
 // TAREA: Usando un bucle 'while', decile a tu computadora que registre los números de
 //       diez a uno.
+let p = document.querySelector('#parrafo');
+let body = document.querySelector('#body');
+let text;
+function tarea2 () {
+
+    let num = 10;
+    while (num >= 1){
+        text = document.createTextNode(Number(num));
+        p.appendChild(text);
+        body.appendChild(p);
+        num--;
+    }
+
+}
+tarea2();
 /*
 function tarea2 (){
     let num = 11;
