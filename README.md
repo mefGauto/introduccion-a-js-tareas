@@ -1,5 +1,5 @@
-# introduccion-a-js-tareas
-En este repositorio se guardan las tareas realizadas en el curo de r/Argentina Programa
+# Curso-js-Master
+En este repositorio se guardan las tareas realizadas en el curso de r/Argentina Programa
 
 Link del curso: https://argentinaprograma.com/
 
