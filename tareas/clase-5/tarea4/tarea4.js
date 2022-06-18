@@ -5,40 +5,41 @@
 // 2. obtener el número más pequeño y mostrarlo en un <em> pre-creado con el texto "El número más pequeño es..."
 // 3. obtener el número más grande y mostrarlo en un <em> pre-creado con el texto "El número más grande es..."
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
-let ol = document.querySelector('#listaOrdenada');
-let numArray = [];
-document.querySelector('#btnSubir').onclick = function() {
+let listaNumeros = document.querySelector('#lista-ordenada');
+let cantidadNumeros = [];
+document.querySelector('#btn-subir').onclick = function() {
     let nodoLi = document.createElement('li');
-    let inputNum = Number(document.querySelector('#inputNum').value);
-    let num = document.createTextNode(`${inputNum}`);
-    nodoLi.appendChild(num);
-    ol.appendChild(nodoLi);
+    let inputNumero = Number(document.querySelector('#input-numero').value);
+    let numeroAgregado = document.createTextNode(`${inputNumero}`);
+    
+    nodoLi.appendChild(numeroAgregado);
+    listaNumeros.appendChild(nodoLi);
 
-    numArray.push(inputNum);
+    cantidadNumeros.push(inputNumero);
 
-    let emPromedio = document.querySelector('#promedio');
+    let mensajeDelPromedio = document.querySelector('#promedio');
     let totalNumeros = 0;
-    for (let i = 0; i < numArray.length; i++){
-        totalNumeros = totalNumeros + numArray[i];
+    for (let i = 0; i < cantidadNumeros.length; i++){
+        totalNumeros = totalNumeros + cantidadNumeros[i];
     }
-    let numPromedio = totalNumeros / numArray.length;
-    emPromedio.textContent = `El promedio del array es: ${numPromedio}`;
+    let promedioTotal = totalNumeros / cantidadNumeros.length;
+    mensajeDelPromedio.textContent = `El promedio del array es: ${promedioTotal}`;
 
-    let emMin = document.querySelector('#numMin');
-    let numMin = Math.min(...numArray);
-    emMin.textContent = `El numero minimo es: ${numMin}`;
+    let mensajeNumeroMinimo = document.querySelector('#numero-minimo');
+    let cantidadMinima = Math.min(...cantidadNumeros);
+    mensajeNumeroMinimo.textContent = `El numero minimo es: ${cantidadMinima}`;
 
-    let emMax = document.querySelector('#numMax');
-    let numMax = Math.max(...numArray);
-    emMax.textContent = `El numero maximo es: ${numMax}`;
+    let mensajeNumeroMaximo = document.querySelector('#numero-maximo');
+    let cantidadMaxima = Math.max(...cantidadNumeros);
+    mensajeNumeroMaximo.textContent = `El numero maximo es: ${numMax}`;
 
-    let emFrecuente = document.querySelector('#frecuente');
-    let numFrecuente = [...numArray].sort();
-    let numDuplicados = [];
-    for (let i = 0; i < numFrecuente.length; i++){
-        if (numFrecuente[i + 1] === numFrecuente[i]){
-            numDuplicados.push(numFrecuente[i]);
-            emFrecuente.textContent = `Los numeros mas frecuentes son ${numDuplicados}`;
+    let mensajeNumeroFrecuente = document.querySelector('#frecuente');
+    let cantidadOrdenada = [...cantidadNumeros].sort();
+    let numerosDuplicados = [];
+    for (let i = 0; i < cantidadOrdenada.length; i++){
+        if (cantidadOrdenada[i + 1] === cantidadOrdenada[i]){
+            numerosDuplicados.push(cantidadOrdenada[i]);
+            mensajeNumeroFrecuente.textContent = `Los numeros mas frecuentes son ${numerosDuplicados}`;
         }
     }
 
