@@ -36,9 +36,11 @@ function obtenerPromedio(){
 
     let mensajeDelPromedio = document.querySelector('#promedio');
     let totalNumeros = 0;
+    
     for (let i = 0; i < cantidadNumeros.length; i++){
         totalNumeros = totalNumeros + cantidadNumeros[i];
     }
+    
     let promedioTotal = totalNumeros / cantidadNumeros.length;
     mensajeDelPromedio.textContent = `El promedio del array es: ${promedioTotal}`;
 
@@ -46,18 +48,27 @@ function obtenerPromedio(){
 
 function obtenerNumeroMinimo() {
     
-    let mensajeNumeroMinimo = document.querySelector('#numero-minimo');
-    let cantidadMinima = Math.min(...cantidadNumeros);
-    mensajeNumeroMinimo.textContent = `El numero minimo es: ${cantidadMinima}`;
+    let numeroMenor = cantidadNumeros[0];
+    for(let i = 1; i < cantidadNumeros.length; i++) {
 
+        if(cantidadNumeros[i] < numeroMenor) {
+            numeroMenor = cantidadNumeros[i];
+        }
+        let mensajeNumeroMenor = document.querySelector('#numero-minimo');
+        mensajeNumeroMenor.textContent = `El numero minimo es: ${numeroMenor}`;
+    }
 }
 
 function obtenerNumeroMaximo() {
     
-    let mensajeNumeroMaximo = document.querySelector('#numero-maximo');
-    let cantidadMaxima = Math.max(...cantidadNumeros);
-    mensajeNumeroMaximo.textContent = `El numero maximo es: ${cantidadMaxima}`;
-
+    let numeroMayor = cantidadNumeros[0];
+    for(let i = 1; i < cantidadNumeros.length; i++) {
+        if (cantidadNumeros[i] > numeroMayor) {
+            numeroMayor = cantidadNumeros[i];
+            let mensajeNumeroMaximo = document.querySelector('#numero-maximo');
+            mensajeNumeroMaximo.textContent = `El numero maximo es: ${numeroMayor}`;
+        }
+    }
 }
 
 function obtenerNumeroMasFrecuente() {
