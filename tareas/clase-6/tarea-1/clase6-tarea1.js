@@ -9,7 +9,7 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 borrando los inputs ya creados (investigar cómo en MDN).
 */
 
-document.querySelector('#subir-cantidad-integrantes').onclick = function (event) {
+document.querySelector('#subir-cantidad-integrantes').onclick = function () {
     const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
     let cantidadIntegrantes = Number($cantidadIntegrantes.value);
     subirCantidadIntegrantes(cantidadIntegrantes);
@@ -19,6 +19,10 @@ document.querySelector('#subir-cantidad-integrantes').onclick = function (event)
 
 function subirCantidadIntegrantes(cantidadIntegrantes) {
 
+    if(cantidadIntegrantes > 0) {
+        crearBotonCalcular();
+    }
+
     for(let i = 0; i < cantidadIntegrantes; i++) {
         crearIntegrante();
     }
@@ -27,6 +31,7 @@ function subirCantidadIntegrantes(cantidadIntegrantes) {
 
 function crearIntegrante () {
     const $div = document.createElement('div');
+    $div.className = 'edades-integrantes';
     const $divIntegrantesIngresados = document.querySelector('#cantidad-integrantes-ingresados');
 
     let labelEdadIntegrante = document.createElement('label');
@@ -40,4 +45,83 @@ function crearIntegrante () {
 
     $divIntegrantesIngresados.appendChild($div);
 
+}
+
+function crearBotonCalcular() {
+
+        // Crea el boton
+        
+    const $botonCalcular = document.createElement('button');
+    $botonCalcular.id = 'calcular'
+    $botonCalcular.type = 'submit';
+    $botonCalcular.textContent = `Calcular`;
+
+    const $div = document.querySelector('#calculos');
+    $div.appendChild($botonCalcular);
+
+
+        // Se ejecuta al hacer click en el boton
+
+    document.querySelector('#calcular').onclick = function() {
+        guardarEdadIntegrantes();
+        obtenerEdadMayor();
+        obtenerEdadMenor();
+        obtenerEdadPromedio();
+        return false;
+    }
+}
+
+
+let edadesGuardadas;
+function guardarEdadIntegrantes() {
+
+    const $edades = document.querySelectorAll('.edades-integrantes input');
+    let edades = [];
+
+    for(let i = 0; i < $edades.length; i++) {
+
+        edades.push(Number($edades[i].value));
+
+    }
+    return edadesGuardadas = edades;
+}
+
+function obtenerEdadMayor() {
+
+    let edadMayor = edadesGuardadas[0];
+    for(let i = 1; i < edadesGuardadas.length; i++) {
+        if (edadesGuardadas[i] > edadMayor) {
+            edadMayor = edadesGuardadas[i]
+        }
+    }
+    const $mensajeMayorEdad = document.querySelector('#mayor-edad');
+    $mensajeMayorEdad.textContent = `La mayor edad del grupo familiar es ${edadMayor}`;
+    return $mensajeMayorEdad;
+}
+
+function obtenerEdadMenor() {
+
+    let edadMenor = edadesGuardadas[0];
+    for(let i = 0; i < edadesGuardadas.length; i++) {
+        if (edadesGuardadas[i] < edadMenor) {
+            edadMenor = edadesGuardadas[i]
+        }
+    }
+    const $mensajeMenorEdad = document.querySelector('#menor-edad');
+    $mensajeMenorEdad.textContent = `La menor edad del grupo familiar es ${edadMenor}`;
+    return $mensajeMenorEdad;
+}
+
+function obtenerEdadPromedio() {
+
+    let edadTotal = 0;
+    for(let i = 0; i < edadesGuardadas.length; i++) {
+        edadTotal = edadTotal + edadesGuardadas[i];
+    }
+
+    let edadPromedio = Math.floor(edadTotal / edadesGuardadas.length);
+
+    const $mensajeEdadPromedio = document.querySelector('#edad-promedio-familiar');
+    $mensajeEdadPromedio.textContent = `El promedio de la edad familiar es ${edadPromedio}`;
+    return $mensajeEdadPromedio;
 }
