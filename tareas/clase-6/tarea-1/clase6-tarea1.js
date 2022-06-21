@@ -12,15 +12,20 @@ borrando los inputs ya creados (investigar cómo en MDN).
 document.querySelector('#subir-cantidad-integrantes').onclick = function () {
     const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
     let cantidadIntegrantes = Number($cantidadIntegrantes.value);
+    resetear();
     subirCantidadIntegrantes(cantidadIntegrantes);
 
     return false;
 }
 
+
+        //   Sube, crea y guarda la cantidad de integrantes que elije el usuario
+
 function subirCantidadIntegrantes(cantidadIntegrantes) {
 
     if(cantidadIntegrantes > 0) {
         crearBotonCalcular();
+        crearBotonResetear();
     }
 
     for(let i = 0; i < cantidadIntegrantes; i++) {
@@ -47,6 +52,24 @@ function crearIntegrante () {
 
 }
 
+let edadesGuardadas;
+function guardarEdadIntegrantes() {
+
+    const $edades = document.querySelectorAll('.edades-integrantes input');
+    let edades = [];
+
+    for(let i = 0; i < $edades.length; i++) {
+
+        edades.push(Number($edades[i].value));
+
+    }
+    return edadesGuardadas = edades;
+}
+
+
+            //  Crea los botones, una funcion para borrarlos y 
+            //  borra los inputs añadidos por el usuario
+
 function crearBotonCalcular() {
 
         // Crea el boton
@@ -71,20 +94,51 @@ function crearBotonCalcular() {
     }
 }
 
+function crearBotonResetear() {
 
-let edadesGuardadas;
-function guardarEdadIntegrantes() {
+            //  Crea el boton
+    const $botonResetear = document.createElement('button');
+    $botonResetear.id = 'resetear';
+    $botonResetear.type = 'reset';
+    $botonResetear.textContent = 'Limpiar';
 
-    const $edades = document.querySelectorAll('.edades-integrantes input');
-    let edades = [];
+    const $div = document.querySelector('#calculos');
+    $div.appendChild($botonResetear);
 
-    for(let i = 0; i < $edades.length; i++) {
-
-        edades.push(Number($edades[i].value));
+        // Se ejecura al hacer click en el boton
+    document.querySelector('#resetear').onclick = function() {
+        resetear();
+        obtenerEdadMayor().remove();
+        obtenerEdadMenor().remove();
+        obtenerEdadPromedio().remove();
+        borrarBotones();
 
     }
-    return edadesGuardadas = edades;
 }
+
+function borrarBotones() {
+
+    const $borrarCalcular = document.querySelector('#calcular')
+    $borrarCalcular.remove();
+
+    const $borrarResetear = document.querySelector('#resetear');
+    $borrarResetear.remove();
+}
+
+
+
+function resetear() {
+
+    let cantidadIntegrantes = document.querySelectorAll('.edades-integrantes');
+    for(let i = 0; i < cantidadIntegrantes.length; i++) {
+
+        cantidadIntegrantes[i].remove();
+
+    }
+}
+
+
+        //   Calculos necesarios para los mensajes de edad mayor, menor y promedio del grupo familiar 
 
 function obtenerEdadMayor() {
 
