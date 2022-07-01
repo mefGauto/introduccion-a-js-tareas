@@ -13,7 +13,7 @@ document.querySelector('#subir-cantidad-integrantes').onclick = function () {
     const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
     let cantidadIntegrantes = Number($cantidadIntegrantes.value);
     resetear();
-    subirCantidadIntegrantes(cantidadIntegrantes);
+    añadirIntegrantes(cantidadIntegrantes);
 
     return false;
 }
@@ -21,7 +21,7 @@ document.querySelector('#subir-cantidad-integrantes').onclick = function () {
 
         //   Sube, crea y guarda la cantidad de integrantes que elije el usuario
 
-function subirCantidadIntegrantes(cantidadIntegrantes) {
+function añadirIntegrantes(cantidadIntegrantes) {
 
     if(cantidadIntegrantes > 0) {
         crearBotonCalcular();
