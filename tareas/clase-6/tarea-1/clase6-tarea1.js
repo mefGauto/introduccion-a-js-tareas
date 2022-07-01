@@ -15,17 +15,17 @@ borrando los inputs ya creados (investigar cómo en MDN).
 ocultarBotones();
 
 
-document.querySelector('#añadir-cantidad-integrantes').onclick = function () {
+document.querySelector('#añadir-cantidad-integrantes').onclick = function(evento) {
     const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
     let cantidadIntegrantes = Number($cantidadIntegrantes.value);
     resetear();
     añadirIntegrantes(cantidadIntegrantes);
     mostrarBotones();
-    return false;
+    evento.preventDefault();
 }
         // Se ejecuta al hacer click en el boton "Calcular" o "Limpiar".
 
-        document.querySelector('#boton-calcular').onclick = function() {
+        document.querySelector('#boton-calcular').onclick = function(evento) {
             const $arrayEdades = guardarEdadIntegrantes();
             obtenerEdadMayor($arrayEdades);
             obtenerEdadMenor($arrayEdades);
@@ -34,16 +34,16 @@ document.querySelector('#añadir-cantidad-integrantes').onclick = function () {
             mostrarEdadMayor();
             mostrarEdadMenor();
             mostrarEdadPromedio();
-            return false;
+            evento.preventDefault();
         }
     
-        document.querySelector('#boton-limpiar').onclick = function() {
+        document.querySelector('#boton-limpiar').onclick = function(evento) {
             ocultarEdadMayor();
             ocultarEdadMenor();
             ocultarEdadPromedio();
             ocultarBotones();
             resetear();
-            return false;
+            evento.preventDefault();
         }
 
 
