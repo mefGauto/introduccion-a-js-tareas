@@ -9,24 +9,47 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 borrando los inputs ya creados (investigar cómo en MDN).
 */
 
-document.querySelector('#subir-cantidad-integrantes').onclick = function () {
+
+
+
+ocultarBotones();
+
+
+document.querySelector('#añadir-cantidad-integrantes').onclick = function () {
     const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
     let cantidadIntegrantes = Number($cantidadIntegrantes.value);
     resetear();
-    subirCantidadIntegrantes(cantidadIntegrantes);
-
+    añadirIntegrantes(cantidadIntegrantes);
+    mostrarBotones();
     return false;
 }
+        // Se ejecuta al hacer click en el boton "Calcular" o "Limpiar".
+
+        document.querySelector('#boton-calcular').onclick = function() {
+            const $arrayEdades = guardarEdadIntegrantes();
+            obtenerEdadMayor($arrayEdades);
+            obtenerEdadMenor($arrayEdades);
+            obtenerEdadPromedio($arrayEdades);
+
+            mostrarEdadMayor();
+            mostrarEdadMenor();
+            mostrarEdadPromedio();
+            return false;
+        }
+    
+        document.querySelector('#boton-limpiar').onclick = function() {
+            ocultarEdadMayor();
+            ocultarEdadMenor();
+            ocultarEdadPromedio();
+            ocultarBotones();
+            resetear();
+            return false;
+        }
 
 
-        //   Sube, crea y guarda la cantidad de integrantes que elije el usuario
+        //   Crea y luego añade los integrantes creados al index.
 
-function subirCantidadIntegrantes(cantidadIntegrantes) {
-
-    if(cantidadIntegrantes > 0) {
-        crearBotonCalcular();
-        crearBotonResetear();
-    }
+function añadirIntegrantes(cantidadIntegrantes) {
 
     for(let i = 0; i < cantidadIntegrantes; i++) {
         crearIntegrante();
@@ -40,7 +63,7 @@ function crearIntegrante () {
     const $divIntegrantesIngresados = document.querySelector('#cantidad-integrantes-ingresados');
 
     let labelEdadIntegrante = document.createElement('label');
-    labelEdadIntegrante.textContent = `Ingresa la edad del integrante familiar `; 
+    labelEdadIntegrante.textContent = `Ingresa la edad del integrante familiar `;
     
     let inputEdadIntegrante = document.createElement('input');
     inputEdadIntegrante.type = 'number';
@@ -52,7 +75,7 @@ function crearIntegrante () {
 
 }
 
-let edadesGuardadas;
+
 function guardarEdadIntegrantes() {
 
     const $edades = document.querySelectorAll('.edades-integrantes input');
@@ -63,69 +86,28 @@ function guardarEdadIntegrantes() {
         edades.push(Number($edades[i].value));
 
     }
-    return edadesGuardadas = edades;
+    return edades;
 }
 
 
-            //  Crea los botones, una funcion para borrarlos y 
-            //  borra los inputs añadidos por el usuario
+        // La primer funcion oculta los botones "Calcular" y "Limpiar", la segunda los muestra
+        // y la tercer funcion borra la cantidad de integrantes ingresados.
 
-function crearBotonCalcular() {
+function ocultarBotones() {
+    const $ocultarBotonCalcular = document.querySelector('#boton-calcular');
+    $ocultarBotonCalcular.className = 'ocultar';
 
-        // Crea el boton
-        
-    const $botonCalcular = document.createElement('button');
-    $botonCalcular.id = 'calcular'
-    $botonCalcular.type = 'submit';
-    $botonCalcular.textContent = `Calcular`;
-
-    const $div = document.querySelector('#calculos');
-    $div.appendChild($botonCalcular);
-
-
-        // Se ejecuta al hacer click en el boton
-
-    document.querySelector('#calcular').onclick = function() {
-        guardarEdadIntegrantes();
-        obtenerEdadMayor();
-        obtenerEdadMenor();
-        obtenerEdadPromedio();
-        return false;
-    }
+    const $ocultarBotonLimpiar = document.querySelector('#boton-limpiar');
+    $ocultarBotonLimpiar.className = 'ocultar';
 }
 
-function crearBotonResetear() {
+function mostrarBotones() {
+    const $mostrarBotonCalcular = document.querySelector('#boton-calcular');
+    $mostrarBotonCalcular.className = '';
 
-            //  Crea el boton
-    const $botonResetear = document.createElement('button');
-    $botonResetear.id = 'resetear';
-    $botonResetear.type = 'reset';
-    $botonResetear.textContent = 'Limpiar';
-
-    const $div = document.querySelector('#calculos');
-    $div.appendChild($botonResetear);
-
-        // Se ejecura al hacer click en el boton
-    document.querySelector('#resetear').onclick = function() {
-        resetear();
-        obtenerEdadMayor().remove();
-        obtenerEdadMenor().remove();
-        obtenerEdadPromedio().remove();
-        borrarBotones();
-
-    }
+    const $mostrarBotonLimpiar = document.querySelector('#boton-limpiar');
+    $mostrarBotonLimpiar.className = '';
 }
-
-function borrarBotones() {
-
-    const $borrarCalcular = document.querySelector('#calcular')
-    $borrarCalcular.remove();
-
-    const $borrarResetear = document.querySelector('#resetear');
-    $borrarResetear.remove();
-}
-
-
 
 function resetear() {
 
@@ -137,15 +119,56 @@ function resetear() {
     }
 }
 
+        //      Estas funciones ocultan los mensajes creados al calular los promedios.
+
+function ocultarEdadMayor() {
+
+    const $olcultarEdadMayor = document.querySelector('#mayor-edad');
+    $olcultarEdadMayor.className = 'ocultar';
+}
+
+function ocultarEdadMenor() {
+
+    const $olcultarEdadMenor = document.querySelector('#menor-edad');
+    $olcultarEdadMenor.className = 'ocultar';
+}
+
+
+function ocultarEdadPromedio() {
+
+    const $olcultarEdadPromedio = document.querySelector('#edad-promedio-familiar');
+    $olcultarEdadPromedio.className = 'ocultar';
+}
+
+        //      Estas funciones muestran los mensajes creados al calcular los promedio.
+
+function mostrarEdadMayor() {
+
+    const $olcultarEdadMayor = document.querySelector('#mayor-edad');
+    $olcultarEdadMayor.className = '';
+}
+
+function mostrarEdadMenor() {
+
+    const $olcultarEdadMenor = document.querySelector('#menor-edad');
+    $olcultarEdadMenor.className = '';
+}
+
+
+function mostrarEdadPromedio() {
+
+    const $olcultarEdadPromedio = document.querySelector('#edad-promedio-familiar');
+    $olcultarEdadPromedio.className = '';
+}
 
         //   Calculos necesarios para los mensajes de edad mayor, menor y promedio del grupo familiar 
 
-function obtenerEdadMayor() {
+function obtenerEdadMayor($arrayEdades) {
 
-    let edadMayor = edadesGuardadas[0];
-    for(let i = 1; i < edadesGuardadas.length; i++) {
-        if (edadesGuardadas[i] > edadMayor) {
-            edadMayor = edadesGuardadas[i]
+    let edadMayor = $arrayEdades[0];
+    for(let i = 1; i < $arrayEdades.length; i++) {
+        if ($arrayEdades[i] > edadMayor) {
+            edadMayor = $arrayEdades[i];
         }
     }
     const $mensajeMayorEdad = document.querySelector('#mayor-edad');
@@ -153,12 +176,12 @@ function obtenerEdadMayor() {
     return $mensajeMayorEdad;
 }
 
-function obtenerEdadMenor() {
+function obtenerEdadMenor($arrayEdades) {
 
-    let edadMenor = edadesGuardadas[0];
-    for(let i = 0; i < edadesGuardadas.length; i++) {
-        if (edadesGuardadas[i] < edadMenor) {
-            edadMenor = edadesGuardadas[i]
+    let edadMenor = $arrayEdades[0];
+    for(let i = 0; i < $arrayEdades.length; i++) {
+        if ($arrayEdades[i] < edadMenor) {
+            edadMenor = $arrayEdades[i];
         }
     }
     const $mensajeMenorEdad = document.querySelector('#menor-edad');
@@ -166,14 +189,14 @@ function obtenerEdadMenor() {
     return $mensajeMenorEdad;
 }
 
-function obtenerEdadPromedio() {
+function obtenerEdadPromedio($arrayEdades) {
 
     let edadTotal = 0;
-    for(let i = 0; i < edadesGuardadas.length; i++) {
-        edadTotal = edadTotal + edadesGuardadas[i];
+    for(let i = 0; i < $arrayEdades.length; i++) {
+        edadTotal = edadTotal + $arrayEdades[i];
     }
 
-    let edadPromedio = Math.floor(edadTotal / edadesGuardadas.length);
+    let edadPromedio = Math.floor(edadTotal / $arrayEdades.length);
 
     const $mensajeEdadPromedio = document.querySelector('#edad-promedio-familiar');
     $mensajeEdadPromedio.textContent = `El promedio de la edad familiar es ${edadPromedio}`;

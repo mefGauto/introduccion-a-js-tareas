@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="botones.css">
     <title>Clase 6, Tarea 1</title>
 </head>
 <body>
     <form action="">
 
         <label for="cantidad-integrantes"></label>
-        <input type="number" id="cantidad-integrantes">
-        <button type="submit" id="subir-cantidad-integrantes">Subir</button>
+        <input type="number" id="cantidad-integrantes" placeholder="Elija la cantidad de integrantes">
+        <button type="submit" id="añadir-cantidad-integrantes">Añadir</button>
 
         <div id="cantidad-integrantes-ingresados">
 
@@ -22,6 +23,9 @@
             <p id="edad-promedio-familiar"></p>
             <p id="mayor-edad"></p>
             <p id="menor-edad"></p>
+
+            <button id="boton-calcular">Calcular</button>
+            <button id="boton-limpiar">Limpiar</button>
         </div>
     </form>
     
