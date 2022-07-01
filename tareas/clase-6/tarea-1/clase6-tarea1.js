@@ -8,13 +8,13 @@ la menor edad y el promedio del grupo familiar.
 Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, 
 borrando los inputs ya creados (investigar cómo en MDN).
 */
-
-document.querySelector('#subir-cantidad-integrantes').onclick = function () {
+ocultarBotones();
+document.querySelector('#añadir-cantidad-integrantes').onclick = function () {
     const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
     let cantidadIntegrantes = Number($cantidadIntegrantes.value);
     resetear();
     añadirIntegrantes(cantidadIntegrantes);
-
+    mostrarBotones();
     return false;
 }
 
@@ -23,10 +23,6 @@ document.querySelector('#subir-cantidad-integrantes').onclick = function () {
 
 function añadirIntegrantes(cantidadIntegrantes) {
 
-    if(cantidadIntegrantes > 0) {
-        crearBotonCalcular();
-        crearBotonResetear();
-    }
 
     for(let i = 0; i < cantidadIntegrantes; i++) {
         crearIntegrante();
@@ -67,65 +63,39 @@ function guardarEdadIntegrantes() {
 }
 
 
-            //  Crea los botones, una funcion para borrarlos y 
-            //  borra los inputs añadidos por el usuario
+        // Se ejecuta al hacer click en el boton "Calcular" o "Limpiar".
 
-function crearBotonCalcular() {
-
-        // Crea el boton
-        
-    const $botonCalcular = document.createElement('button');
-    $botonCalcular.id = 'calcular'
-    $botonCalcular.type = 'submit';
-    $botonCalcular.textContent = `Calcular`;
-
-    const $div = document.querySelector('#calculos');
-    $div.appendChild($botonCalcular);
-
-
-        // Se ejecuta al hacer click en el boton
-
-    document.querySelector('#calcular').onclick = function() {
+    document.querySelector('#boton-calcular').onclick = function() {
         guardarEdadIntegrantes();
         obtenerEdadMayor();
         obtenerEdadMenor();
         obtenerEdadPromedio();
         return false;
     }
-}
 
-function crearBotonResetear() {
-
-            //  Crea el boton
-    const $botonResetear = document.createElement('button');
-    $botonResetear.id = 'resetear';
-    $botonResetear.type = 'reset';
-    $botonResetear.textContent = 'Limpiar';
-
-    const $div = document.querySelector('#calculos');
-    $div.appendChild($botonResetear);
-
-        // Se ejecura al hacer click en el boton
-    document.querySelector('#resetear').onclick = function() {
-        resetear();
+    document.querySelector('#boton-limpiar').onclick = function() {
         obtenerEdadMayor().remove();
         obtenerEdadMenor().remove();
         obtenerEdadPromedio().remove();
-        borrarBotones();
-
+        resetear();
+        return false;
     }
+
+function ocultarBotones() {
+    const $ocultarBotonCalcular = document.querySelector('#boton-calcular');
+    $ocultarBotonCalcular.className = 'ocultar';
+
+    const $ocultarBotonLimpiar = document.querySelector('#boton-limpiar');
+    $ocultarBotonLimpiar.className = 'ocultar';
 }
 
-function borrarBotones() {
+function mostrarBotones() {
+    const $mostrarBotonCalcular = document.querySelector('#boton-calcular');
+    $mostrarBotonCalcular.className = '';
 
-    const $borrarCalcular = document.querySelector('#calcular')
-    $borrarCalcular.remove();
-
-    const $borrarResetear = document.querySelector('#resetear');
-    $borrarResetear.remove();
+    const $mostrarBotonLimpiar = document.querySelector('#boton-limpiar');
+    $mostrarBotonLimpiar.className = '';
 }
-
-
 
 function resetear() {
 
