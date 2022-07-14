@@ -22,4 +22,3 @@ function validarCantidadIntegrantes () {
         return 'El numero de integrantes debe ser entero'
     }
 }
-console.log( validarCantidadIntegrantes() )

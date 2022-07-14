@@ -22,7 +22,9 @@ document.querySelector('#añadir-cantidad-integrantes').onclick = function(event
     manejarErrores();
 
     ocultarBotones();
-    
+    ocultarEdadMayor()
+    ocultarEdadMenor()
+    ocultarEdadPromedio()
     resetear();
     
     añadirIntegrantes(cantidadIntegrantes);
