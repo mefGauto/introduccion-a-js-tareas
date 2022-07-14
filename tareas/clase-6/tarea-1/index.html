@@ -8,10 +8,10 @@
     <title>Clase 6, Tarea 1</title>
 </head>
 <body>
-    <form action="">
+    <form id="formulario-edad-integrantes">
 
         <label for="cantidad-integrantes"></label>
-        <input type="number" id="cantidad-integrantes" placeholder="Elija la cantidad de integrantes">
+        <input type="number" value="0" id="cantidad-integrantes" name="cantidad-integrantes" placeholder="Elija la cantidad de integrantes">
         <button type="submit" id="añadir-cantidad-integrantes">Añadir</button>
 
         <div id="cantidad-integrantes-ingresados">
@@ -20,15 +20,20 @@
         </div>
 
         <div id="calculos">
-            <p id="edad-promedio-familiar"></p>
-            <p id="mayor-edad"></p>
-            <p id="menor-edad"></p>
+            <p id="edad-promedio-familiar" name="promedio" ></p>
+            <p id="mayor-edad" name="mayor"></p>
+            <p id="menor-edad" name="menor"></p>
 
             <button id="boton-calcular">Calcular</button>
             <button id="boton-limpiar">Limpiar</button>
         </div>
+
+        <div id="errores">
+            <p id="error-cantidad-integrantes"></p>
+        </div>
     </form>
     
     <script src="clase6-tarea1.js"></script>
+    <script src="validaciones.js"></script>
 </body>
 </html>

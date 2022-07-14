@@ -16,11 +16,23 @@ ocultarBotones();
 
 
 document.querySelector('#añadir-cantidad-integrantes').onclick = function(evento) {
+    
     const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
     let cantidadIntegrantes = Number($cantidadIntegrantes.value);
+    manejarErrores();
+
+    ocultarBotones();
+    ocultarEdadMayor()
+    ocultarEdadMenor()
+    ocultarEdadPromedio()
     resetear();
+    
     añadirIntegrantes(cantidadIntegrantes);
-    mostrarBotones();
+    
+    if(cantidadIntegrantes > 0) {
+        mostrarBotones();
+    }
+    
     evento.preventDefault();
 }
         // Se ejecuta al hacer click en el boton "Calcular" o "Limpiar".
